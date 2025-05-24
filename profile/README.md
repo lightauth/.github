@@ -4,7 +4,7 @@
     <img src="../images/light-auth.svg" alt="Light Auth Logo" width="120"/>
 </p>
 
-[Light Auth](https://lightauth.github.io) is a lightweight authentication solution designed for simplicity and ease of integration.
+![LightAuth](../images/light-auth.svg) [Light Auth](https://lightauth.github.io) is a lightweight authentication solution designed for simplicity and ease of integration.
 
 It provides essential authentication features with minimal configuration, making it ideal for small projects, prototypes, or applications that require straightforward user sign-in functionality.
 
@@ -35,14 +35,16 @@ Light Auth shines across your favorite frameworks! Whether you’re building wit
 > This getting started is based on the  [light-auth-nextjs](https://www.npmjs.com/package/@light-auth/nextjs) package.
 >
 > You will find examples for all others frameworks in each relevant repository
+>
+> The ![LightAuth](../images/light-auth.svg) [Light Auth](https://lightauth.github.io) documentation has also a lot of code examples for various scenario.
 
-### Install Light Auth**  
+### 1) Install Light Auth
 
 ``` sh
 npm -i @light-auth/nextjs
 ```
 
-Follow the installation instructions in the project documentation.
+### 2) Configure Light Auth
 
 ``` ts
 import { Google, Github } from "arctic";
@@ -50,36 +52,57 @@ import { CreateLightAuth } from "@light-auth/nextjs";
 
 const googleProvider = {
   providerName: "google",
-  arctic: new Google(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    "http://localhost:3000/api/auth/callback/google"
-  ),
+  arctic: new Google(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, REDIRECT),
 };
-
 
 const githubProvider = {
   providerName: "github",
-  arctic: new GitHub(
-    process.env.GITHUB_CLIENT_ID,
-    process.env.GITHUB_CLIENT_SECRET,
-    "http://localhost:3000/api/auth/callback/github"
-  ),
+  arctic: new GitHub(GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, REDIRECT)
 };
 
 export const { providers, handlers, signIn, signOut, getSession, getUser } = CreateLightAuth({
   providers: [googleProvider, githubProvider]
 ```
 
-2. **Configure Authentication**  
-    Set up your authentication settings as described in the configuration guide.
+### 3) Add Light Auth Handlers
 
-3. **Integrate with Your App**  
-    Import and use Light Auth in your application code.
+``` ts
+import { handlers } from "@/lib/auth";
+export const { GET, POST } = handlers;
+```
 
-## Documentation
+### 4) Use Light Auth
 
-See the [docs](../docs) directory for detailed usage instructions, API reference, and examples.
+``` tsx
+import { getSession, signIn  } from "@/lib/auth";
+
+export default async function Home() {
+  const session = await getSession();
+
+  return (
+    <div>
+      {session != null ? (
+        <div>
+          <p>✅ You are logged in!</p>
+          <div>Session Email: {session.email}</div>
+          <div>Session Provider: {session.providerName}</div>
+        </div>
+      ) : (
+        <div>
+            <form
+            action={async () => {
+                "use server";
+                await signIn("google", "/profile");
+            }}
+            >
+            <button type="submit">login using a form action</button>
+            </form>
+        </div>
+      )}
+    </div>
+  );
+}
+```
 
 ## Contributing
 
