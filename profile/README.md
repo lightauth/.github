@@ -1,10 +1,10 @@
 # Light Auth
 
 <p align="center">
-    <img src="../images/light-auth.svg" alt="Light Auth Logo" width="80"/>
+    <img src="../images/light-auth.svg" alt="Light Auth Logo" width="280"/>
 </p>
 
-![LightAuth](../images/light-auth.svg) [Light Auth](https://lightauth.github.io) is a lightweight authentication solution designed for simplicity and ease of integration.
+<img src="../images/light-auth.svg" alt="Light Auth Logo" width="15"/> [Light Auth](https://lightauth.github.io) is a lightweight authentication solution designed for simplicity and ease of integration.
 
 It provides essential authentication features with minimal configuration, making it ideal for small projects, prototypes, or applications that require straightforward user sign-in functionality.
 
@@ -20,4 +20,4 @@ Light Auth shines across your favorite frameworks! Whether you’re building wit
 | ![SvelteKit](../images/sveltekit.svg) **SvelteKit** | [light-auth-sveltekit](https://www.npmjs.com/package/@light-auth/sveltekit) | [SvelteKit Sample](https://github.com/lightauth/light-auth-sveltekit-sample-one)      |
 | ![Express](../images/express.svg) **Express** | [light-auth-express](https://www.npmjs.com/package/@light-auth/express)     | [Express Sample](https://github.com/lightauth/light-auth-express-sample-one)          |
 
-![LightAuth](../images/light-auth.svg) **Light Auth** integrates seamlessly, letting you add authentication with a sparkle ✨ to any stack!
+<img src="../images/light-auth.svg" alt="Light Auth Logo" width="15"/> **Light Auth** integrates seamlessly, letting you add authentication with a sparkle ✨ to any stack!
